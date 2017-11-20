@@ -1,4 +1,4 @@
-<?php
+dropIfExists<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,6 +18,6 @@ class CreateBuildingsTable extends Migration {
 
 	public function down()
 	{
-		Schema::drop('building');
+		Schema::dropIfExists('building');
 	}
 }
