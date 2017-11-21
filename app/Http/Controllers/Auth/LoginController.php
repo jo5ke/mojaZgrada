@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth as Auth;
+use Illuminate\Support\Facades\Hash as Hash;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Session;
+
 
 class LoginController extends Controller
 {
@@ -36,4 +43,24 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function getUserLogin()
+    {
+        return view('auth.login');
+    }
+
+    public function postUserLogin()
+    {
+        $email = Input::get('email');
+        $password = Input::get('password');
+        $user = User::where('email', $email)->first();
+        
+        if ($user &&  Hash::check(Input::get('password'), $user->password)) {
+            Session::put('user', $user);
+            return redirect()->route('home');
+        }
+        return redirect()->back()->withErrors(['error', 'Wrong email or password!']);
+    }
+
+
 }
