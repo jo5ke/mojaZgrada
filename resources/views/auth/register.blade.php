@@ -8,7 +8,7 @@
                 <div class="panel-heading">Register</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('postUserRegister') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
@@ -25,13 +25,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
                             <label for="last_name" class="col-md-4 control-label">Prezime</label>
 
                             <div class="col-md-6">
                                 <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('last_name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('last_name') }}</strong>
                                     </span>
@@ -73,7 +73,7 @@
                                     </span>
                                 @endif
 
-                                @if ($errors->has('building_numberbuilding_number'))
+                                @if ($errors->has('building_number'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('building_number') }}</strong>
                                     </span>
@@ -133,9 +133,11 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
+                                <!-- <input type="submit" class="btn btn-primary" value="Register"> -->
                                 <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
+                             
                             </div>
                         </div>
                     </form>

@@ -6,6 +6,10 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth as Auth;
+use Illuminate\Support\Facades\Hash as Hash;
 
 class RegisterController extends Controller
 {
@@ -19,7 +23,7 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
+    protected $table = 'users';
     use RegistersUsers;
 
     /**
@@ -68,4 +72,36 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+
+
+    public function getUserRegister()
+    {
+        return view('auth.register');
+    }
+
+    public function postUserRegister(Request $request)
+    {
+        $request->validate([
+        'first_name'            => 'required',
+        'last_name'             => 'required',
+        'email'                 => 'required',
+        'street'                => 'required',
+        'apartment_number'      => 'required',
+        'password'              => 'required',
+        'password_confirmation' => 'required',
+        'building_number'       => 'required',
+        'number_of_occupants'   => 'required',
+        'phone'                 => 'required',
+    ]);
+    if (!strcmp(Input::get('password'), Input::get('password_confirmation'))){
+        $user = new User(Input::all());
+        $user->password = Hash::make(Input::get('password'));
+        $user->save();
+        return redirect()->route('home');
+    } else {
+        return Redirect::back()->withErrors(['error', "Password does not match!"]);
+        }
+    }
 }
+
