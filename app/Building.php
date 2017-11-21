@@ -12,7 +12,7 @@ class Building extends Model
     	$this->belongsTo('App\Admin');
     }
 
-    public function user()
+    public function users()
     {
     	$this->hasMany('App\User');
     }
