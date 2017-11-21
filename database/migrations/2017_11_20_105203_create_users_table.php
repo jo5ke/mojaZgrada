@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration {
 			$table->string('email', 100)->unique();
 			$table->string('phone', 50);
 			$table->integer('number_of_occupants');
+			$table->string('street',100);
+			$table->integer('building_number');
 			$table->rememberToken();
 		});
 	}
