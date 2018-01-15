@@ -14,13 +14,13 @@ class CreateUsersTable extends Migration {
 			$table->softDeletes();
 			$table->string('first_name', 50);
 			$table->string('last_name', 50);
-			$table->integer('apartment_number');
+			$table->integer('apartment_number')->unsigned();
 			$table->string('email', 100)->unique();
 			$table->string('phone', 50);
 			$table->string('password', 100);
-			$table->integer('number_of_occupants');
+			$table->integer('number_of_occupants')->unsigned();
 			$table->string('street', 100);
-			$table->integer('building_number');
+			$table->integer('building_number')->unsigned();
 			$table->rememberToken();
 		});
 	}

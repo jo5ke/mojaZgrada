@@ -50,6 +50,11 @@ class Admin extends Authenticatable
     {
         return $this->hasMany('App\Building');
     }
+
+    public function reports()
+    {
+        return $this->hasMany('App\Report');
+    }
 }
 
 
