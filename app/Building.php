@@ -41,4 +41,8 @@ class Building extends Model
     {
         return $this->hasMany('App\ddd');
     }
+    public function account()
+    {
+        return $this->hasOne('App\Account');
+    }
 }
