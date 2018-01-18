@@ -103,5 +103,17 @@ class RegisterController extends Controller
         return Redirect::back()->withErrors(['error', "Password does not match!"]);
         }
     }
+
+    public function confirmUser($token)
+    {
+        $user = User::where('token', $token)->first();
+        if ($user) {
+            $user->active = 1;
+            $user->save();
+            return redirect()->route('home')->with('message','Account has been validated! Please login in.');
+        }
+        
+        return view('auth.register')->with(['message', 'Tokens do not match!']);
+    }
 }
 

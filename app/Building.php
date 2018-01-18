@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Building extends Model
 {
+    protected $fillable = [
+        'address', 
+        'address_no',
+        'city', 
+        'number_of_apartments',
+        'invoice',
+        'pib',
+        'mat',
+
+    ];
     
     public function admin()
     {

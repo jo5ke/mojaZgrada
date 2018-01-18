@@ -116,15 +116,17 @@ class RegisterController extends Controller
 
     public function confirmUser($token)
     {
-        $user = User::where('token', $token)->first();
-        if ($user) {
-            $user->active = 1;
-            $user->save();
+        $admin = Admin::where('token', $token)->first();
+        if ($admin) {
+            $admin->active = 1;
+            $admin->save();
             return redirect()->route('home')->with('message','Account has been validated! Please login in.');
         }
         
-        return view('auth.register')->with(['message', 'Tokens do not match!']);
+        return view('admin.auth.register')->with(['message', 'Tokens do not match!']);
     }
+
+    
 
 
 }

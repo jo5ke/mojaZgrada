@@ -15,6 +15,10 @@
                     @endif
 
                     You are logged in!
+
+                    <div> 
+                        <a href="{{ route('getRegisterBuilding') }}"> Buy a building plan </a>
+                    </div>
                 </div>
             </div>
         </div>

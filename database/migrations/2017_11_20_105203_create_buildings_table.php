@@ -12,8 +12,14 @@ class CreateBuildingsTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->softDeletes();
+			$table->string('username' , 50);
 			$table->string('address', 100);
-			$table->string('number_of_appartments');
+			$table->string('address_no', 5);
+			$table->string('city', 100);
+			$table->string('number_of_appartments', 100);
+			$table->string('invoice', 100);
+			$table->string('pib', 100);
+			$table->string('mat', 100);
 		});
 	}
 

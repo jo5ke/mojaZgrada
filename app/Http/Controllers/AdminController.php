@@ -7,4 +7,9 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     //
+
+    public function getInvoices()
+    {
+        return view('invoices');
+    }
 }
