@@ -39,6 +39,11 @@ class User extends Authenticatable
 
     public function building()
     {
-        $this->belongsTo('App\Building');
+        return $this->belongsTo('App\Building');
+    }
+
+    public function invoice()
+    {
+        return $this->hasMany('App\Invoice');
     }
 }

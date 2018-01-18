@@ -19,26 +19,26 @@ class Building extends Model
     
     public function admin()
     {
-    	$this->belongsTo('App\Admin');
+    	return $this->belongsTo('App\Admin');
     }
 
     public function users()
     {
-    	$this->hasMany('App\User');
+    	return $this->hasMany('App\User');
     }
 
     public function cleanningplans()
     {
-        $this->hasMany('App\CleanningPlan');
+        return $this->hasMany('App\CleanningPlan');
     }
 
     public function invoice()
     {
-        $this->hasOne('App\Invoice');
+        return $this->hasMany('App\Invoice');//hasOne??? *.*.*.*
     }
 
     public function ddds()
     {
-        $this->hasMany('App\ddd');
+        return $this->hasMany('App\ddd');
     }
 }
