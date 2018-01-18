@@ -40,9 +40,12 @@ class BuildingController extends Controller
     {
         // ovde treba saveovati zgradu ili obrisati ako je placanje neuspesno, to tek kad se sredi placanje.
 
+
+        $building = Building::where('id',$request->bid)->first(); // napraviti hidden input na registration-payment!
+         //  $quantity = $building->number_of_appartments;
+
         // route za kreiranje stanova/usera
-        $quantity = $building->number_of_appartments;
-        return redirect()->route('createApartments' , ['quantity' => $quantity]);
+        return redirect()->route('createApartments' , ['building' => $building]);
 
         // ova ruta treba da se premesti u create Appartments funkciju
         return redirect()->route('getAdminDashboard');
@@ -56,11 +59,12 @@ class BuildingController extends Controller
 
     public function createApartments()
     {
-        for($i=1; $i<= $quantity;$i++){
-        $user = new User();
-        $user->username = "Stan".$i;
-        $user->password = "newpass";
-        $user->save();
+        for($i=1; $i<= $building->number_of_appartments;$i++){
+            $user = new User();
+            $user->username = "Stan".$i;
+            $user->password = "newpass";
+            $user->building_id = $bid;
+            $user->save();
         }
     }
 

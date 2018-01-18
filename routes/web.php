@@ -60,6 +60,13 @@ Route::post('/postBuildingPayment', 'BuildingController@postBuildingPayment')->n
 Route::post('/createApartments', 'BuildingController@createApartments')->name('createApartments');
 
 Route::get('/adminDashboard', 'AdminController@getAdminDashboard')->name('getAdminDashboard');
+Route::get('/userprofiles', 'AdminController@getEditUsers')->name('getEditUsers');
+Route::get('/editUser/{uid}', 'AdminController@getEditUserAccount')->name('getEditUserAccount');
+Route::post('/postEditUserAccount', 'AdminController@postEditUserAccount')->name('postEditUserAccount');
+Route::post('/deleteUserAccount', 'AdminController@deleteUserAccount')->name('deleteUserAccount');
+
+
+
 
 
 

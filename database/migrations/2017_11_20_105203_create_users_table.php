@@ -12,6 +12,8 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->softDeletes();
+			$table->integer('building_id')->unsigned();
+			$table->string('username', 50);			
 			$table->string('first_name', 50);
 			$table->string('last_name', 50);
 			$table->integer('apartment_number')->unsigned();
