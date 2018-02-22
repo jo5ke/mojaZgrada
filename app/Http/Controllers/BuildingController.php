@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Building as Building;
 use App\Admin as Admin;
 use App\User as User;
+use Illuminate\Support\Facades\Auth as Auth;
 
 class BuildingController extends Controller
 {
